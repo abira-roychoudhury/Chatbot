@@ -88,32 +88,30 @@ app.post("/KRA",function(req, res){
     for(i=0;i<name.length;i++)
     {
 
-      kras[name][i]=kras[name][i].toLowerCase();
-
-    	if (kras[name][i] == undefined)
+      if (kras[name[i]] == undefined)
     	{
-  		speech = "KRAs are not set for "+name;
+  		speech = "KRAs are not set for "+name[i];
     	}
     	else
     	{
-    		console.log(JSON.stringify(kras[name][i]));
+    		console.log(JSON.stringify(kras[name[i]]));
   		
   		speech = "KRAs for "+name[i]+" are \n \
   		<table cellspacing='2'> \
   			<tr> \
   				<th>Title</th>\
-  				<th> Rate</th>\
+  				<th> Rate </th>\
   				<th>Comment</th>\
   			</tr> \
   			<tr>\
   				<td>Behaviour</td>\
-  				<td>"+kras[name][i].kratitle.behaviour.rate+"</td>\
-  				<td>"+kras[name][i].kratitle.behaviour.comment+"</td>\
+  				<td>"+kras[name[i]].kratitle.behaviour.rate+"</td>\
+  				<td>"+kras[name[i]].kratitle.behaviour.comment+"</td>\
   			</tr>\
   			<tr>\
   				<td>Communication</td>\
-  				<td>"+kras[name][i].kratitle.communication.rate+"</td>\
-  				<td>"+kras[name][i].kratitle.communication.comment+"</td>\
+  				<td>"+kras[name[i]].kratitle.communication.rate+"</td>\
+  				<td>"+kras[name[i]].kratitle.communication.comment+"</td>\
   			</tr>\
   		</table>"
 
