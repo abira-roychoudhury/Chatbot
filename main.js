@@ -42,7 +42,7 @@ app.post("/KRA",function(req, res){
 	result = req.body.result;
 	parameters = result.parameters;
 
-  names = parameters.Name;
+  name = parameters.Name;
 	
 	console.log(name)
 
