@@ -42,7 +42,7 @@ app.post("/KRA",function(req, res){
 	result = req.body.result;
 	parameters = result.parameters;
 
-  names = parameters.Name.toLowerCase();
+  names = parameters.Name;
 	
 	console.log(name)
 
@@ -88,6 +88,8 @@ app.post("/KRA",function(req, res){
     for(i=0;i<name.length;i++)
     {
 
+      kras[name][i]=kras[name][i].toLowerCase();
+
     	if (kras[name][i] == undefined)
     	{
   		speech = "KRAs are not set for "+name;
@@ -100,7 +102,7 @@ app.post("/KRA",function(req, res){
   		<table cellspacing='2'> \
   			<tr> \
   				<th>Title</th>\
-  				<th> Rate </th>\
+  				<th> Rate</th>\
   				<th>Comment</th>\
   			</tr> \
   			<tr>\
