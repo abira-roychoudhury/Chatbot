@@ -96,7 +96,7 @@ app.post("/KRA",function(req, res){
     	{
     		console.log(JSON.stringify(kras[name[i]]));
   		
-  		speech = "KRAs for "+name[i]+" are \n \
+  		speech = speech +"\n\n\n"+ "KRAs for "+name[i]+" are \n \
   		<table cellspacing='2'> \
   			<tr> \
   				<th>Title</th>\
@@ -116,7 +116,7 @@ app.post("/KRA",function(req, res){
   		</table>"
 
     	}
-
+    }
   	console.log("speech : "+speech);
 
   	res.send({
@@ -124,7 +124,7 @@ app.post("/KRA",function(req, res){
           "displayText": speech,
           "source": "apiai-onlinestore-shipping"
       });
-  }
+  
 });
 
 const PORT = process.env.PORT || 8080;
