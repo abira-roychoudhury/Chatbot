@@ -41,7 +41,8 @@ app.post("/KRA",function(req, res){
 
 	result = req.body.result;
 	parameters = result.parameters;
-  	name = parameters.Name.toLowerCase();
+
+  names = parameters.Name.toLowerCase();
 	
 	console.log(name)
 
@@ -80,46 +81,50 @@ app.post("/KRA",function(req, res){
                       'communication' : {'rate' : 5 , 'comment' : 'Excellent'}
                       }
                  }
-  }
+      }
 
   	console.log(kras[name]);
 
-  	if (kras[name] == undefined)
-  	{
-		speech = "KRAs are not set for "+name;
-  	}
-  	else
-  	{
-  		console.log(JSON.stringify(kras[name]));
-		
-		speech = "KRAs for "+name+" are \n \
-		<table cellspacing='2'> \
-			<tr> \
-				<th>Title</th>\
-				<th>Rate</th>\
-				<th>Comment</th>\
-			</tr> \
-			<tr>\
-				<td>Behaviour</td>\
-				<td>"+kras[name].kratitle.behaviour.rate+"</td>\
-				<td>"+kras[name].kratitle.behaviour.comment+"</td>\
-			</tr>\
-			<tr>\
-				<td>Communication</td>\
-				<td>"+kras[name].kratitle.communication.rate+"</td>\
-				<td>"+kras[name].kratitle.communication.comment+"</td>\
-			</tr>\
-		</table>"
+    for(i=0;i<name.length;i++)
+    {
 
-  	}
+    	if (kras[name][i] == undefined)
+    	{
+  		speech = "KRAs are not set for "+name;
+    	}
+    	else
+    	{
+    		console.log(JSON.stringify(kras[name][i]));
+  		
+  		speech = "KRAs for "+name[i]+" are \n \
+  		<table cellspacing='2'> \
+  			<tr> \
+  				<th>Title</th>\
+  				<th> Rate </th>\
+  				<th>Comment</th>\
+  			</tr> \
+  			<tr>\
+  				<td>Behaviour</td>\
+  				<td>"+kras[name][i].kratitle.behaviour.rate+"</td>\
+  				<td>"+kras[name][i].kratitle.behaviour.comment+"</td>\
+  			</tr>\
+  			<tr>\
+  				<td>Communication</td>\
+  				<td>"+kras[name][i].kratitle.communication.rate+"</td>\
+  				<td>"+kras[name][i].kratitle.communication.comment+"</td>\
+  			</tr>\
+  		</table>"
 
-	console.log("speech : "+speech);
+    	}
 
-	res.send({
-        "speech": speech,
-        "displayText": speech,
-        "source": "apiai-onlinestore-shipping"
-    });
+  	console.log("speech : "+speech);
+
+  	res.send({
+          "speech": speech,
+          "displayText": speech,
+          "source": "apiai-onlinestore-shipping"
+      });
+  }
 });
 
 const PORT = process.env.PORT || 8080;
