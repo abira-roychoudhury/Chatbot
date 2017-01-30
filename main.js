@@ -44,7 +44,7 @@ app.post("/KRA",function(req, res){
 
   name = parameters.Name;
 	
-	console.log(name)
+	console.log("PRINTING THE ARRAY name"+name)
 
   	kras= {
       
@@ -83,8 +83,8 @@ app.post("/KRA",function(req, res){
                  }
       }
 
-  	console.log(kras[name]);
-
+  	console.log("PRINTING kra[name]"+kras[name]);
+    speech="";
     for(i=0;i<name.length;i++)
     {
 
